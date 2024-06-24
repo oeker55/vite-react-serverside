@@ -21,9 +21,10 @@ const app = express();
             const template = templateHtml;
             const { render } = await import('./dist/server/entry-server.js');
             const rendered = await render('Fr-5500191', 77404);
-            const script = `<script>window.__productDetailInitialState__ = ${JSON.stringify(rendered.productData).replace(/</g, '\\u003c')}</script>`;
+            const productDataScript = `<script>window.__productDetailInitialState__ = ${JSON.stringify(rendered.productData).replace(/</g, '\\u003c')}</script>`;
+            const firmSettingsScript = `<script>window.__firmSettings__ = ${JSON.stringify(rendered.firmSettings).replace(/</g, '\\u003c')}</script>`;
             const html = template
-                .replace(`<!--app-head-->`, `${script}` ?? '')
+                .replace(`<!--app-head-->`, `${productDataScript} ${firmSettingsScript}` ?? '')
                 .replace(`<!--app-html-->`, rendered.html ?? '');
 
             res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
