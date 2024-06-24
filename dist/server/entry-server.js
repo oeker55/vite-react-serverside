@@ -515,7 +515,7 @@ const getCampaignInfos = (item, firmPriceSale, scode, isMobile, currency) => {
     };
   }
 };
-const getData = async (fcode, productId) => {
+const getProductData = async (fcode, productId) => {
   try {
     const response = await fetch(`https://farktorapi.com/new/${fcode}/${productId}`);
     if (!response.ok) {
@@ -652,7 +652,7 @@ const createStore = (detailData, firmSettings) => toolkit.configureStore({
   }
 });
 async function render(fcode, productId) {
-  const productData = await getData(fcode, productId);
+  const productData = await getProductData(fcode, productId);
   const firmSettings = constantValueInitialState;
   const store = createStore(productData);
   const html = ReactDOMServer.renderToString(/* @__PURE__ */ jsxRuntime.jsx(App, { store }));
