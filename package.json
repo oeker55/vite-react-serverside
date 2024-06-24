@@ -1,9 +1,9 @@
 {
-  "name": "server",
+  "name": "vite-react-serverside",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "nodemon index.js",
     "start": "cross-env NODE_ENV=production nodemon index.js",
