@@ -653,8 +653,9 @@ const createStore = (detailData, firmSettings) => toolkit.configureStore({
 });
 async function render(fcode, productId) {
   const productData = await getData(fcode, productId);
+  const firmSettings = constantValueInitialState;
   const store = createStore(productData);
   const html = ReactDOMServer.renderToString(/* @__PURE__ */ jsxRuntime.jsx(App, { store }));
-  return { html, productData };
+  return { html, productData, firmSettings };
 }
 exports.render = render;
