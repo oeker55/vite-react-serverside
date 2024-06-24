@@ -19,7 +19,7 @@ const app = express();
     app.use('*', async (req, res) => {
         try {
             const template = templateHtml;
-            const { render } = await import('./dist/server/entry-server.mjs');
+            const { render } = await import('./dist/server/entry-server.js');
             const rendered = await render('Fr-5500191', 77404);
             const script = `<script>window.__productDetailInitialState__ = ${JSON.stringify(rendered.productData).replace(/</g, '\\u003c')}</script>`;
             const html = template
